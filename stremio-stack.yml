@@ -13,7 +13,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.media_proxy.rule=Host(`mfp.oci.w3studio.it`)"
         - "traefik.http.routers.media_proxy.entrypoints=websecure"
-        - "traefik.http.routers.media_proxy.tls.certresolver=ovh"
+        - "traefik.http.routers.media_proxy.tls.certresolver=letsencrypt"
         - "traefik.http.services.media_proxy.loadbalancer.server.port=8888"
     networks:
       - traefik-net
@@ -29,7 +29,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.mammamia.rule=Host(`mammamia.oci.w3studio.it`)"
         - "traefik.http.routers.mammamia.entrypoints=websecure"
-        - "traefik.http.routers.mammamia.tls.certresolver=ovh"
+        - "traefik.http.routers.mammamia.tls.certresolver=letsencrypt"
         - "traefik.http.services.mammamia.loadbalancer.server.port=8080"
     networks:
       - traefik-net
@@ -51,7 +51,7 @@ services:
         - "traefik.enable=true"
         - "traefik.http.routers.streamv.rule=Host(`streamv.oci.w3studio.it`)"
         - "traefik.http.routers.streamv.entrypoints=websecure"
-        - "traefik.http.routers.streamv.tls.certresolver=ovh"
+        - "traefik.http.routers.streamv.tls.certresolver=letsencrypt"
         - "traefik.http.services.streamv.loadbalancer.server.port=7860"
   #webstreamr:
   #  image: registry.oci.w3studio.it/webstreamr:latest
