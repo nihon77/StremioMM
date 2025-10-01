@@ -1,4 +1,3 @@
-# Scegli un'immagine Node.js di base
 FROM node:20-slim
 
 ARG CACHE_BUST=233
@@ -86,4 +85,5 @@ ENTRYPOINT ["node", "/start"]
 # EXPOSE 3000 
 
 # Definisci il comando per avviare l'applicazione
+
 #CMD [ "pnpm", "start" ]
