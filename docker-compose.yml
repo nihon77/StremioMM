@@ -2,7 +2,8 @@ version: '3.8'
 
 services:
   mediaflow_proxy:
-    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
+    #build: https://github.com/mhdzumair/mediaflow-proxy.git#main
+    image: qwertyuiop8899/mediaflow-proxy:latest
     container_name: mediaflow_proxy
     environment:
       - API_PASSWORD=${API_PASSWORD}
@@ -38,6 +39,7 @@ services:
       - BOTHLINK=${BOTHLINK}
       - ANIMEUNITY_ENABLED=${ANIMEUNITY_ENABLED}
       - ANIMESATURN_ENABLED=${ANIMESATURN_ENABLED}
+      - ADDON_BASE_URL=${ADDON_BASE_URL}
     restart: unless-stopped 
     command: pnpm start
   

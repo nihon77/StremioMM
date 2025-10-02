@@ -14,32 +14,32 @@ steps:
         from_secret: OCI_REGISTRY_USER
       password:
         from_secret: OCI_REGISTRY_PASSWORD
-  build-mfp:
-    image: woodpeckerci/plugin-docker-buildx:6.0.1
-    settings:
-      dockerfile: Dockerfile
-      context: https://github.com/mhdzumair/mediaflow-proxy.git#main
-      repo: registry.oci.w3studio.it/media_flow_proxy
-      tags: latest, ${CI_COMMIT_SHA}
-      push: true
-      registry: registry.oci.w3studio.it
-      username:
-        from_secret: OCI_REGISTRY_USER
-      password:
-        from_secret: OCI_REGISTRY_PASSWORD
-  build-streamv:
-    image: woodpeckerci/plugin-docker-buildx:6.0.1
-    settings:
-      context: https://github.com/qwertyuiop8899/streamvix.git#main
-      dockerfile: Dockerfile
-      repo: registry.oci.w3studio.it/streamv
-      tags: latest, ${CI_COMMIT_SHA}
-      push: true
-      registry: registry.oci.w3studio.it
-      username:
-        from_secret: OCI_REGISTRY_USER
-      password:
-        from_secret: OCI_REGISTRY_PASSWORD
+  #build-mfp:
+  #  image: woodpeckerci/plugin-docker-buildx:6.0.1
+  #  settings:
+  #    dockerfile: Dockerfile
+  #    context: https://github.com/mhdzumair/mediaflow-proxy.git#main
+  #    repo: registry.oci.w3studio.it/media_flow_proxy
+  #    tags: latest, ${CI_COMMIT_SHA}
+  #    push: true
+  #    registry: registry.oci.w3studio.it
+  #    username:
+  #      from_secret: OCI_REGISTRY_USER
+  #    password:
+  #      from_secret: OCI_REGISTRY_PASSWORD
+  #build-streamv:
+  #  image: woodpeckerci/plugin-docker-buildx:6.0.1
+  #  settings:
+  #    context: https://github.com/qwertyuiop8899/streamvix.git#main
+  #    dockerfile: Dockerfile
+  #    repo: registry.oci.w3studio.it/streamv
+  #    tags: latest, ${CI_COMMIT_SHA}
+  #    push: true
+  #    registry: registry.oci.w3studio.it
+  #    username:
+  #      from_secret: OCI_REGISTRY_USER
+  #    password:
+  #      from_secret: OCI_REGISTRY_PASSWORD
   #build-webstreamr:
   #  image: woodpeckerci/plugin-docker-buildx:6.0.1
   #  settings:
@@ -66,8 +66,8 @@ steps:
     commands:
       - echo "$OCI_REGISTRY_PASSWORD" | docker login registry.oci.w3studio.it -u "$OCI_REGISTRY_USER" --password-stdin
       - docker service update --image registry.oci.w3studio.it/mammamia:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_mammamia
-      - docker service update --image registry.oci.w3studio.it/media_flow_proxy:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_mediaflow_proxy
-      - docker service update --image registry.oci.w3studio.it/streamv:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_streamv
+    #  - docker service update --image registry.oci.w3studio.it/media_flow_proxy:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_mediaflow_proxy
+    #  - docker service update --image registry.oci.w3studio.it/streamv:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_streamv
     #  - docker service update --image registry.oci.w3studio.it/webstreamr:${CI_COMMIT_SHA} --with-registry-auth stremio_webstreamr
       
       

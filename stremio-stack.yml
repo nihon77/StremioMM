@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   mediaflow_proxy:
-    image: registry.oci.w3studio.it/media_flow_proxy:latest
+    image: qwertyuiop8899/mediaflow-proxy:latest
     environment:
       - API_PASSWORD=${API_PASSWORD}
       - 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
@@ -34,7 +34,7 @@ services:
     networks:
       - traefik-net
   streamv:
-    image: registry.oci.w3studio.it/streamv:latest
+    image: qwertyuiop8899/streamvix:latest
     environment:
       - TMDB_API_KEY=${TMDB_API_KEY}
       - MFP_URL=${MFP_URL}
@@ -42,6 +42,7 @@ services:
       - BOTHLINK=${BOTHLINK}
       - ANIMEUNITY_ENABLED=${ANIMEUNITY_ENABLED}
       - ANIMESATURN_ENABLED=${ANIMESATURN_ENABLED}
+      - ADDON_BASE_URL=${ADDON_BASE_URL}
     command: pnpm start
     networks:
       - traefik-net
