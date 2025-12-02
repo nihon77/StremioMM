@@ -11,7 +11,8 @@ services:
       - FORWARDED_ALLOW_IPS=${FORWARDED_ALLOW_IPS}
     restart: unless-stopped
   mammamia:
-    build: https://github.com/UrloMythus/MammaMia.git#main
+    #build: https://github.com/UrloMythus/MammaMia.git#main
+    image: qwertyuiop8899/mammamia:latest
     container_name: mammamia
     environment:
       - TMDB_KEY=${TMDB_KEY}

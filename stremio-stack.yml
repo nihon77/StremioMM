@@ -18,7 +18,7 @@ services:
     networks:
       - traefik-net
   mammamia:
-    image: registry.oci.w3studio.it/mammamia:latest
+    image: qwertyuiop8899/mammamia:latest
     environment:
       - TMDB_KEY=${TMDB_KEY}
       - PROXY=${PROXY}
@@ -55,7 +55,7 @@ services:
         - "traefik.http.routers.streamv.tls.certresolver=letsencrypt"
         - "traefik.http.services.streamv.loadbalancer.server.port=7860"
   #webstreamr:
-  #  image: registry.oci.w3studio.it/webstreamr:latest
+  #  image: webstreamr/webstreamr:latest
   #  networks:
   #    - traefik-net
   #  deploy:
