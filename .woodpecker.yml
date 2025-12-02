@@ -65,7 +65,7 @@ steps:
       - /var/run/docker.sock:/var/run/docker.sock
     commands:
       - echo "$OCI_REGISTRY_PASSWORD" | docker login registry.oci.w3studio.it -u "$OCI_REGISTRY_USER" --password-stdin
-      - docker service update --image registry.oci.w3studio.it/mammamia:${CI_COMMIT_SHA} --with-registry-auth stremio_mammamia
+      - docker service update --image registry.oci.w3studio.it/mammamia:${CI_COMMIT_SHA} --with-registry-auth streamio_mammamia
     #  - docker service update --image registry.oci.w3studio.it/media_flow_proxy:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_mediaflow_proxy
     #  - docker service update --image registry.oci.w3studio.it/streamv:${CI_COMMIT_SHA} --with-registry-auth stremio-stack_streamv
     #  - docker service update --image registry.oci.w3studio.it/webstreamr:${CI_COMMIT_SHA} --with-registry-auth stremio_webstreamr
