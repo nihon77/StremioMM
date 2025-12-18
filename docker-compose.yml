@@ -1,6 +1,14 @@
 version: '3.8'
 
 services:
+  easy_proxy:
+    #build: https://github.com/nzo66/EasyProxy.git#main
+    image: qwertyuiop8899/easyproxy:latest
+    container_name: mediaflow_proxy
+    environment:
+      - API_PASSWORD=${API_PASSWORD}
+      - 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
+    restart: unless-stopped
   mediaflow_proxy:
     #build: https://github.com/mhdzumair/mediaflow-proxy.git#main
     image: qwertyuiop8899/mediaflow-proxy:latest
