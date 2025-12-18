@@ -4,7 +4,7 @@ services:
   easy_proxy:
     #build: https://github.com/nzo66/EasyProxy.git#main
     image: qwertyuiop8899/easyproxy:latest
-    container_name: mediaflow_proxy
+    container_name: easyproxy
     environment:
       - API_PASSWORD=${API_PASSWORD}
       - 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
