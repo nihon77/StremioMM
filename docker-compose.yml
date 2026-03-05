@@ -2,16 +2,16 @@ version: '3.8'
 
 services:
   easy_proxy:
-    #build: https://github.com/nzo66/EasyProxy.git#main
-    image: qwertyuiop8899/easyproxy:latest
+    #build: https://github.com/realbestia1/EasyProxy#main
+    image: ghcr.io/realbestia1/easyproxy:latest
     container_name: easyproxy
     environment:
       - API_PASSWORD=${API_PASSWORD}
       - 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
     restart: unless-stopped
   mediaflow_proxy:
-    #build: https://github.com/mhdzumair/mediaflow-proxy.git#main
-    image: qwertyuiop8899/mediaflow-proxy:latest
+    build: https://github.com/mhdzumair/mediaflow-proxy.git#main
+    #image: qwertyuiop8899/mediaflow-proxy:latest
     container_name: mediaflow_proxy
     environment:
       - API_PASSWORD=${API_PASSWORD}
@@ -51,7 +51,18 @@ services:
       - ADDON_BASE_URL=${ADDON_BASE_URL}
     restart: unless-stopped 
     command: pnpm start
-  
+  easystreams:
+    build: https://github.com/realbestia1/easystreams.git#main
+    container_name: easystreams
+    ports:
+      - "7000:7000"
+    environment:
+      - PORT=7000
+      - NODE_ENV=production
+      - VERBOSE_LOGS=0
+      - QUIET_PROVIDER_LOGS=1
+      #- CF_PROXY_URL=https://********.workers.dev/
+    restart: unless-stopped
   #webstreamr:
   #  build: https://github.com/webstreamr/webstreamr.git#main
   #  container_name: webstreamr
