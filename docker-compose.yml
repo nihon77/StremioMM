@@ -54,14 +54,21 @@ services:
   easystreams:
     build: https://github.com/realbestia1/easystreams.git#main
     container_name: easystreams
-    ports:
-      - "7000:7000"
+    # ports:
+      # - "7000:7000"
     environment:
       - PORT=7000
       - NODE_ENV=production
       - VERBOSE_LOGS=0
       - QUIET_PROVIDER_LOGS=1
-      #- CF_PROXY_URL=https://********.workers.dev/
+      # - CF_PROXY_URL=https://********.workers.dev/
+    restart: unless-stopped
+  tvvoo:
+    #build: https://github.com/realbestia1/easystreams.git#main
+    image: qwertyuiop8899/tvvoo:latest
+    container_name: tvvoo
+    # ports:
+      # - "3000:3000"
     restart: unless-stopped
   #webstreamr:
   #  build: https://github.com/webstreamr/webstreamr.git#main
