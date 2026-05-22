@@ -18,15 +18,24 @@ services:
       - 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
       - FORWARDED_ALLOW_IPS=${FORWARDED_ALLOW_IPS}
     restart: unless-stopped
-  mammamia:
-    #build: https://github.com/UrloMythus/MammaMia.git#main
-    image: qwertyuiop8899/mammamia:latest
-    container_name: mammamia
+  selfstream:
+    image: qwertyuiop8899/selfstream:latest
+    container_name: mediaflow_proxy
     environment:
-      - TMDB_KEY=${TMDB_KEY}
-      - PROXY=${PROXY}
-      - FORWARDPROXY=${FORWARDPROXY}
-    restart: unless-stopped 
+      #- API_PASSWORD=${API_PASSWORD}
+      #- 'TRANSPORT_ROUTES={"all://*.ichigotv.net": {"verify_ssl": false}, "all://ichigotv.net": {"verify_ssl": false}}'
+      #- FORWARDED_ALLOW_IPS=${FORWARDED_ALLOW_IPS}
+      - PORT=7778
+    restart: unless-stopped
+  #mammamia:
+  #  #build: https://github.com/UrloMythus/MammaMia.git#main
+  #  image: qwertyuiop8899/mammamia:latest
+  #  container_name: mammamia
+  #  environment:
+  #    - TMDB_KEY=${TMDB_KEY}
+  #    - PROXY=${PROXY}
+  #    - FORWARDPROXY=${FORWARDPROXY}
+  #  restart: unless-stopped 
   #stremio-docker:
   #  image: tsaridas/stremio-docker:latest
   #  container_name: stremio-docker
